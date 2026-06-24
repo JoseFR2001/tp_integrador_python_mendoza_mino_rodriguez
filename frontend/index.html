@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predicción de Burnout Estudiantil</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fuente premium desde Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="background-decor"></div>
+    <div class="container">
+      <header>
+        <h1>Riesgo de Burnout Estudiantil</h1>
+        <p class="subtitle">
+          Analizador Inteligente de Impacto de IA y Desgaste Académico
+        </p>
+      </header>
+
+      <main class="main-content">
+        <!-- Formulario de Entrada -->
+        <section class="card-form">
+          <h2>Datos del Estudiante</h2>
+          <form id="burnoutForm">
+            <div class="form-grid">
+              <!-- Categoría Académica -->
+              <div class="form-group">
+                <label for="Major_Category">Área de Carrera</label>
+                <select id="Major_Category" required>
+                  <option value="STEM">STEM (Ciencias, Tech, Ing, Mat)</option>
+                  <option value="Business">Negocios y Administración</option>
+                  <option value="Humanities">Humanidades</option>
+                  <option value="Medical">Medicina y Salud</option>
+                  <option value="Arts">Artes y Diseño</option>
+                </select>
+              </div>
+
+              <!-- Año de Estudio -->
+              <div class="form-group">
+                <label for="Year_of_Study">Año de Cursada</label>
+                <select id="Year_of_Study" required>
+                  <option value="Freshman">Primer Año (Freshman)</option>
+                  <option value="Sophomore">Segundo Año (Sophomore)</option>
+                  <option value="Junior">Tercer Año (Junior)</option>
+                  <option value="Senior">Cuarto Año (Senior)</option>
+                  <option value="Graduate">Posgrado (Graduate)</option>
+                </select>
+              </div>
+
+              <!-- Pre-Semester GPA -->
+              <div class="form-group">
+                <label for="Pre_Semester_GPA">GPA Previo (1.0 - 4.0)</label>
+                <input
+                  type="number"
+                  id="Pre_Semester_GPA"
+                  step="0.01"
+                  min="1.0"
+                  max="4.0"
+                  value="3.15"
+                  required
+                />
+              </div>
+
+              <!-- Post-Semester GPA -->
+              <div class="form-group">
+                <label for="Post_Semester_GPA"
+                  >GPA Actual/Esperado (1.0 - 4.0)</label
+                >
+                <input
+                  type="number"
+                  id="Post_Semester_GPA"
+                  step="0.01"
+                  min="1.0"
+                  max="4.0"
+                  value="3.35"
+                  required
+                />
+              </div>
+
+              <!-- Horas Semanales GenAI -->
+              <div class="form-group">
+                <label for="Weekly_GenAI_Hours"
+                  >Horas Semanales usando IA</label
+                >
+                <input
+                  type="number"
+                  id="Weekly_GenAI_Hours"
+                  step="0.1"
+                  min="0.0"
+                  max="100.0"
+                  value="8.4"
+                  required
+                />
+              </div>
+
+              <!-- Horas de Estudio Tradicional -->
+              <div class="form-group">
+                <label for="Traditional_Study_Hours"
+                  >Horas de Estudio Tradicional</label
+                >
+                <input
+                  type="number"
+                  id="Traditional_Study_Hours"
+                  step="0.1"
+                  min="0.0"
+                  max="100.0"
+                  value="11.2"
+                  required
+                />
+              </div>
+
+              <!-- Caso de Uso Principal -->
+              <div class="form-group">
+                <label for="Primary_Use_Case">Uso Principal de la IA</label>
+                <select id="Primary_Use_Case" required>
+                  <option value="Coding_Assistance">
+                    Asistencia en Programación
+                  </option>
+                  <option value="Ideation">
+                    Generación de Ideas / Lluvia de ideas
+                  </option>
+                  <option value="Summarizing_Research">
+                    Resumen de Textos/Investigación
+                  </option>
+                  <option value="Copywriting/Drafting">
+                    Redacción y Borradores
+                  </option>
+                  <option value="Problem_Solving">
+                    Resolución de Problemas Complejos
+                  </option>
+                </select>
+              </div>
+
+              <!-- Habilidad en Prompts -->
+              <div class="form-group">
+                <label for="Prompt_Engineering_Skill"
+                  >Habilidad en Prompt Engineering</label
+                >
+                <select id="Prompt_Engineering_Skill" required>
+                  <option value="Beginner">Principiante (Beginner)</option>
+                  <option value="Intermediate" selected>
+                    Intermedio (Intermediate)
+                  </option>
+                  <option value="Advanced">Avanzado (Advanced)</option>
+                </select>
+              </div>
+
+              <!-- Diversidad de herramientas -->
+              <div class="form-group">
+                <label for="Tool_Diversity"
+                  >Cantidad de Herramientas de IA Usadas</label
+                >
+                <input
+                  type="number"
+                  id="Tool_Diversity"
+                  min="1"
+                  max="20"
+                  value="3"
+                  required
+                />
+              </div>
+
+              <!-- Dependencia Autopercibida -->
+              <div class="form-group">
+                <label for="Perceived_AI_Dependency"
+                  >Dependencia de IA Percibida (1 - 10)</label
+                >
+                <input
+                  type="number"
+                  id="Perceived_AI_Dependency"
+                  min="1"
+                  max="10"
+                  value="5"
+                  required
+                />
+              </div>
+
+              <!-- Ansiedad ante exámenes -->
+              <div class="form-group">
+                <label for="Anxiety_Level_During_Exams"
+                  >Nivel de Ansiedad en Exámenes (1 - 10)</label
+                >
+                <input
+                  type="number"
+                  id="Anxiety_Level_During_Exams"
+                  min="1"
+                  max="10"
+                  value="6"
+                  required
+                />
+              </div>
+
+              <!-- Retención de conocimientos -->
+              <div class="form-group">
+                <label for="Skill_Retention_Score"
+                  >Puntaje de Retención de Conocimientos (0 - 100)</label
+                >
+                <input
+                  type="number"
+                  id="Skill_Retention_Score"
+                  min="0"
+                  max="100"
+                  value="75"
+                  required
+                />
+              </div>
+
+              <!-- Política Institucional -->
+              <div class="form-group">
+                <label for="Institutional_Policy"
+                  >Política de la Universidad respecto a IA</label
+                >
+                <select id="Institutional_Policy" required>
+                  <option value="Allowed_With_Citation">
+                    Permitido con Citación Obligatoria
+                  </option>
+                  <option value="Strict_Ban">Prohibido Estrictamente</option>
+                  <option value="Actively_Encouraged">
+                    Fomentado Activamente
+                  </option>
+                </select>
+              </div>
+
+              <!-- Suscripción de Pago -->
+              <div class="form-group checkbox-group">
+                <label for="Paid_Subscription" class="checkbox-label">
+                  <input type="checkbox" id="Paid_Subscription" />
+                  ¿Posee Suscripción de Pago (Pro/Plus)?
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-predict">Analizar Riesgo</button>
+          </form>
+        </section>
+
+        <!-- Sección de Resultados -->
+        <section class="card-result" id="resultSection">
+          <div class="result-placeholder" id="placeholderView">
+            <p>
+              Completa el formulario y presiona "Analizar Riesgo" para
+              visualizar los resultados aquí.
+            </p>
+          </div>
+
+          <div class="result-display hidden" id="resultView">
+            <h2>Resultado del Análisis</h2>
+
+            <div class="badge-result" id="burnoutBadge">
+              <span id="burnoutValue">MEDIO</span>
+            </div>
+
+            <p class="result-explanation" id="resultText">
+              El modelo estima un riesgo moderado. Se sugiere mantener el
+              balance entre el estudio tradicional y la IA.
+            </p>
+
+            <!-- Barras de Probabilidades -->
+            <div class="probability-container">
+              <h3>Probabilidad Detallada</h3>
+
+              <div class="prob-bar-group">
+                <div class="prob-labels">
+                  <span>Riesgo Alto</span>
+                  <span id="probHighText">0%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill high" id="probHighFill"></div>
+                </div>
+              </div>
+
+              <div class="prob-bar-group">
+                <div class="prob-labels">
+                  <span>Riesgo Medio</span>
+                  <span id="probMediumText">0%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill medium" id="probMediumFill"></div>
+                </div>
+              </div>
+
+              <div class="prob-bar-group">
+                <div class="prob-labels">
+                  <span>Riesgo Bajo</span>
+                  <span id="probLowText">0%</span>
+                </div>
+                <div class="prob-track">
+                  <div class="prob-fill low" id="probLowFill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
